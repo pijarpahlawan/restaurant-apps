@@ -26,14 +26,6 @@ module.exports = {
                 type: "asset/source",
                 exclude: path.resolve(__dirname, "src/index.html"),
             },
-            {
-                test: /\.(png|jpg|jpeg)$/,
-                type: "asset/resource",
-                include: path.resolve(__dirname, "src/assets/images"),
-                generator: {
-                    filename: "assets/images/[name][ext]",
-                },
-            },
         ],
     },
     plugins: [
