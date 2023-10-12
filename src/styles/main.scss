@@ -46,19 +46,21 @@ header {
     gap: 1rem;
     position: sticky;
     top: 0;
-    z-index: 99;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    z-index: 99;
 
     .brand {
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 98;
     }
 
     .hamburger {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        z-index: 98;
 
         button {
             width: fit-content;
@@ -87,14 +89,15 @@ header {
         justify-content: center;
         align-items: center;
         background-color: $main-black;
+        top: -14rem;
         width: 100vw;
-        top: 7rem;
         transition: all 0.3s ease-in-out;
         padding: 2rem;
         overflow: hidden;
+        z-index: 97;
 
         &.open {
-            top: -14rem;
+            top: 7rem;
         }
 
         ul {
