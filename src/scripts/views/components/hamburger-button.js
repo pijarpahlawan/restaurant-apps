@@ -10,7 +10,7 @@ class HamburgerButton extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <button id="hamburgerButton"></button>
+            <button id="hamburgerButton" type="button"></button>
         `;
         this.renderIcon();
     }
