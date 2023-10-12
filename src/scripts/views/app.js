@@ -1,4 +1,5 @@
 import DrawerInitiator from "../utils/drawer-initiator";
+import HomePage from "./pages/home-page";
 
 class App {
     #button = null;
@@ -19,6 +20,12 @@ class App {
         this.#content = content;
 
         this.#initialAppShell();
+    }
+
+    async renderPage() {
+        const page = HomePage;
+        this.#content.innerHTML = await page.render();
+        await page.afterRender();
     }
 }
 

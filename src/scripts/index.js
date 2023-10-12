@@ -9,3 +9,7 @@ const app = new App({
     drawer: document.querySelector("#navigationDrawer"),
     content: document.querySelector("#mainContent"),
 });
+
+window.addEventListener("load", () => {
+    app.renderPage();
+});
