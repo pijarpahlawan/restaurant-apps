@@ -40,7 +40,7 @@ body {
 
 header {
     padding: 1rem 2rem;
-    background-color: $main-black;
+    background-color: rgba($color: $main-black, $alpha: 0.9);
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1rem;
@@ -89,7 +89,7 @@ header {
         justify-content: center;
         align-items: center;
         background-color: rgba($color: $main-black, $alpha: 0.9);
-        top: -14rem;
+        top: -15rem;
         width: 100%;
         transition: all 0.3s ease-in-out;
         padding: 2rem;
@@ -97,7 +97,7 @@ header {
         z-index: 97;
 
         &.open {
-            top: 7rem;
+            top: 7.35rem;
         }
 
         ul {
@@ -121,5 +121,28 @@ header {
                 }
             }
         }
+    }
+}
+
+main {
+    padding: 2rem;
+    flex: 1;
+}
+
+footer {
+    padding: 1rem;
+    background-color: $main-black;
+
+    #footer-tools {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    p {
+        text-align: center;
+        color: $main-white;
     }
 }
