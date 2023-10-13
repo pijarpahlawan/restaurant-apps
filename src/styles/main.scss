@@ -25,13 +25,14 @@ body {
 
 .skip-link {
     position: absolute;
-    top: -40px;
+    top: -5rem;
     left: 0;
     padding: 8px;
     background-color: $secondary-color;
     color: $main-black;
     z-index: 100;
     text-decoration: none;
+    font-size: 3rem;
 }
 
 .skip-link:focus {
