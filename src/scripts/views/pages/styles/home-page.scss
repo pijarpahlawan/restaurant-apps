@@ -38,3 +38,55 @@
         z-index: -1;
     }
 }
+
+.restaurant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .restaurant {
+        &__list {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .restaurant {
+        &__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .restaurant {
+        &__list {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .restaurant {
+        &__list {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+}
