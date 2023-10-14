@@ -1,6 +1,6 @@
 {
     "name": "restaurant-apps",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Web profile for restaurant group",
     "main": "src/scripts/index.js",
     "scripts": {
