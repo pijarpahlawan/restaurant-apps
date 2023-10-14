@@ -12,3 +12,7 @@ const app = new App({
 window.addEventListener("load", () => {
     app.renderPage();
 });
+
+window.addEventListener("hashchange", () => {
+    app.renderPage();
+});
