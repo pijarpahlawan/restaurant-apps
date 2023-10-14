@@ -19,7 +19,7 @@ class RestaurantList extends HTMLElement {
 
     render() {
         // assign main class and innerHTML
-        this.className = "restaurant";
+        this.className = "restaurant-list";
         this.innerHTML = template;
 
         // get attribute value

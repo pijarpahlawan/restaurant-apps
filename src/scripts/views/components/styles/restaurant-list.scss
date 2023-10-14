@@ -1,4 +1,4 @@
-.restaurant {
+.restaurant-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,7 +12,7 @@
         text-align: center;
     }
 
-    &__list {
+    &__container {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -20,32 +20,32 @@
 }
 
 @media screen and (min-width: 650px) {
-    .restaurant {
-        &__list {
+    .restaurant-list {
+        &__container {
             grid-template-columns: 1fr 1fr;
         }
     }
 }
 
 @media screen and (min-width: 850px) {
-    .restaurant {
-        &__list {
+    .restaurant-list {
+        &__container {
             grid-template-columns: repeat(3, 1fr);
         }
     }
 }
 
 @media screen and (min-width: 1200px) {
-    .restaurant {
-        &__list {
+    .restaurant-list {
+        &__container {
             grid-template-columns: repeat(4, 1fr);
         }
     }
 }
 
 @media screen and (min-width: 1600px) {
-    .restaurant {
-        &__list {
+    .restaurant-list {
+        &__container {
             grid-template-columns: repeat(5, 1fr);
         }
     }
