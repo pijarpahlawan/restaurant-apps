@@ -1,7 +1,7 @@
 {
     "name": "restaurant-apps",
     "version": "1.0.1",
-    "description": "Restaurant group profile",
+    "description": "Web profile for restaurant group",
     "main": "src/scripts/index.js",
     "scripts": {
         "start-dev": "webpack-dev-server --config webpack.dev.js",
@@ -15,7 +15,7 @@
         "restaurant-profile"
     ],
     "author": "Pijar Pahlawan <pijarpahlawanq@gmail.com>",
-    "license": "ISC",
+    "license": "MIT",
     "devDependencies": {
         "@babel/core": "^7.18.5",
         "@babel/preset-env": "^7.18.2",
