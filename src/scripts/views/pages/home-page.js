@@ -9,15 +9,8 @@ const HomePage = {
 
     async afterRender() {
         const restaurantList = await getAllRestaurant();
-        const restaurantListElement =
-            document.getElementById("restaurant-list");
-
-        restaurantList.forEach((restaurant) => {
-            const restaurantItemElement =
-                document.createElement("restaurant-item");
-            restaurantListElement.appendChild(restaurantItemElement);
-            restaurantItemElement.restaurant = restaurant;
-        });
+        const restaurantListElement = document.querySelector("restaurant-list");
+        restaurantListElement.restaurants = restaurantList;
     },
 };
 
