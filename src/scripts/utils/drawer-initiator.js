@@ -6,7 +6,6 @@ class DrawerInitiator {
         // change button fill
         const buttonState = button.parentElement.isOpen;
         button.parentElement.isOpen = !buttonState;
-        button.classList.toggle("rotate");
     }
 
     static #closeDrawer(event, button, drawer) {
@@ -14,7 +13,6 @@ class DrawerInitiator {
         drawer.classList.remove("open");
 
         button.parentElement.isOpen = false;
-        button.classList.toggle("rotate");
     }
 
     static init({ button, drawer, content }) {
