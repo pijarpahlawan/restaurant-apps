@@ -8,7 +8,14 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     entry: {
-        index: path.resolve(__dirname, "src/scripts/index.js"),
+        components: path.resolve(
+            __dirname,
+            "src/scripts/views/components/index.js"
+        ),
+        index: {
+            dependOn: "components",
+            import: path.resolve(__dirname, "src/scripts/index.js"),
+        },
     },
     output: {
         filename: "[name].bundle.js",
@@ -46,6 +53,9 @@ module.exports = {
         }),
     ],
     optimization: {
+        splitChunks: {
+            chunks: "all",
+        },
         minimize: true,
         minimizer: [
             new CssMinimizerPlugin(),
