@@ -10,4 +10,31 @@ async function getAllRestaurant() {
     }
 }
 
-export { getAllRestaurant };
+async function getRestaurantDetail(id) {
+    try {
+        const response = await fetch(API_ENDPOINTS.RESTAURANT_DETAIL(id));
+        const responseJson = await response.json();
+        return responseJson.restaurant;
+    } catch (error) {
+        return error.message;
+    }
+}
+
+async function addRestaurantReview(review) {
+    try {
+        const response = await fetch(API_ENDPOINTS.RESTAURANT_REVIEW, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Auth-Token": "12345",
+            },
+            body: JSON.stringify(review),
+        });
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        return error.message;
+    }
+}
+
+export { getAllRestaurant, getRestaurantDetail, addRestaurantReview };

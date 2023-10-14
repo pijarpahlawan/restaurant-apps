@@ -1,5 +1,6 @@
 import template from "./templates/restaurant-item.html";
 import "./styles/restaurant-item.scss";
+import API_CONFIG from "../../config/api-config";
 
 class RestaurantItem extends HTMLElement {
     #restaurant = null;
@@ -34,7 +35,7 @@ class RestaurantItem extends HTMLElement {
         );
 
         // set elements attribute value
-        pictureElement.src = this.restaurant.pictureId;
+        pictureElement.src = `${API_CONFIG.BASE_SMALL_IMAGE_URL}${this.restaurant.pictureId}`;
         pictureElement.alt = this.restaurant.name;
 
         ratingElement.innerHTML = this.restaurant.rating;
