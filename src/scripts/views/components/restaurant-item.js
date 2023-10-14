@@ -6,7 +6,6 @@ class RestaurantItem extends HTMLElement {
     #restaurant = null;
 
     connectedCallback() {
-        console.log("restaurant-item connected");
         this.render();
     }
 
@@ -41,6 +40,7 @@ class RestaurantItem extends HTMLElement {
         ratingElement.innerHTML = this.restaurant.rating;
 
         nameElement.innerHTML = this.restaurant.name;
+        nameElement.href = `/#/detail/${this.restaurant.id}`;
 
         descriptionElement.innerHTML = this.restaurant.description;
     }
