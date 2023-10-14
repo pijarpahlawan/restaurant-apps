@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 7rem);
+    height: calc(100vh - 10rem);
     width: 100%;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 
@@ -44,18 +44,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
 
     h1 {
         font-size: 3rem;
         font-weight: 700;
         margin-bottom: 2rem;
+        text-align: center;
     }
 
     &__list {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
-        margin: 2rem 0;
     }
 }
 
