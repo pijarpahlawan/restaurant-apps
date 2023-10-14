@@ -26,6 +26,7 @@ class RestaurantItem extends HTMLElement {
 
     afterRender() {
         // get elements
+        const anchorElement = this.querySelector("#restaurant-item-anchor");
         const pictureElement = this.querySelector("#restaurant-item-picture");
         const ratingElement = this.querySelector("#restaurant-item-rating");
         const nameElement = this.querySelector("#restaurant-item-name");
@@ -34,13 +35,14 @@ class RestaurantItem extends HTMLElement {
         );
 
         // set elements attribute value
+        anchorElement.href = `/#/detail/${this.restaurant.id}`;
+
         pictureElement.src = `${API_CONFIG.BASE_SMALL_IMAGE_URL}${this.restaurant.pictureId}`;
         pictureElement.alt = this.restaurant.name;
 
         ratingElement.innerHTML = this.restaurant.rating;
 
         nameElement.innerHTML = this.restaurant.name;
-        nameElement.href = `/#/detail/${this.restaurant.id}`;
 
         descriptionElement.innerHTML = this.restaurant.description;
     }
