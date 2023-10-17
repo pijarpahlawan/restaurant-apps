@@ -37,7 +37,7 @@ class RestaurantItem extends HTMLElement {
         // set elements attribute value
         anchorElement.href = `/#/detail/${this.restaurant.id}`;
 
-        pictureElement.src = `${API_CONFIG.BASE_SMALL_IMAGE_URL}${this.restaurant.pictureId}`;
+        pictureElement.src = `${API_CONFIG.BASE_IMAGE_URL}${this.restaurant.pictureId}`;
         pictureElement.alt = this.restaurant.name;
 
         ratingElement.innerHTML = this.restaurant.rating;
