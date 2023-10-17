@@ -26,10 +26,28 @@
             border: 1px solid $main-black;
         }
 
-        div {
+        &__container {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+        }
+
+        &__container:first-child {
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        favorite-button {
+            width: fit-content;
+            svg {
+                width: 2.75rem;
+                height: 2.75rem;
+
+                path {
+                    fill: #cd1818;
+                }
+            }
         }
     }
 
