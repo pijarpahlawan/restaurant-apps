@@ -1,12 +1,15 @@
 import { addRestaurantReview } from "../data/data-source";
 
 class ReviewInitiator {
-    static #reviewContainer;
-    static #reviews;
+    static #reviewContainer = null;
+    static #reviews = null;
 
-    static init({ restaurantId, reviewContainer, reviews, reviewForm }) {
+    static init({ restaurantId, reviewContainer, initialReview, reviewForm }) {
+        // assign private field
         this.#reviewContainer = reviewContainer;
-        this.#reviews = reviews;
+        this.#reviews = initialReview;
+
+        // add event listener to form when submit
         reviewForm.addEventListener("submit", async (event) => {
             event.preventDefault();
 

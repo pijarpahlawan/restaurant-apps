@@ -65,7 +65,7 @@ const DetailPage = {
         ReviewInitiator.init({
             restaurantId: restaurant.id,
             reviewContainer: reviewsElement,
-            reviews: restaurant.customerReviews,
+            initialReviews: restaurant.customerReviews,
             reviewForm: reviewFormElement,
         });
     },
