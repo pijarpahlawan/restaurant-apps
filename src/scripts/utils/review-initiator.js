@@ -4,10 +4,10 @@ class ReviewInitiator {
     static #reviewContainer = null;
     static #reviews = null;
 
-    static init({ restaurantId, reviewContainer, initialReview, reviewForm }) {
+    static init({ restaurantId, reviewContainer, initialReviews, reviewForm }) {
         // assign private field
         this.#reviewContainer = reviewContainer;
-        this.#reviews = initialReview;
+        this.#reviews = initialReviews;
 
         // add event listener to form when submit
         reviewForm.addEventListener("submit", async (event) => {
