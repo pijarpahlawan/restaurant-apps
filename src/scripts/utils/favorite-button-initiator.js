@@ -1,11 +1,11 @@
 import FavoriteRestaurantIdb from "../data/favorite-restaurant-idb";
 
-class LikeButtonInitiator {
-    static #likeButtonContainer = null;
+class FavoriteButtonInitiator {
+    static #favoriteButtonContainer = null;
     static #restaurant = null;
 
-    static async init({ likeButtonContainer, restaurant }) {
-        this.#likeButtonContainer = likeButtonContainer;
+    static async init({ favoriteButtonContainer, restaurant }) {
+        this.#favoriteButtonContainer = favoriteButtonContainer;
         this.#restaurant = restaurant;
 
         await this.#renderButton();
@@ -27,24 +27,24 @@ class LikeButtonInitiator {
     }
 
     static #renderLike() {
-        this.#likeButtonContainer.liked = false;
+        this.#favoriteButtonContainer.isLiked = false;
 
-        const likeButton = document.querySelector("#like-button");
-        likeButton.addEventListener("click", async () => {
+        const favoriteButton = document.querySelector("#favoriteButton");
+        favoriteButton.addEventListener("click", async () => {
             await FavoriteRestaurantIdb.putRestaurant(this.#restaurant);
             this.#renderButton();
         });
     }
 
     static #renderLiked() {
-        this.#likeButtonContainer.liked = true;
+        this.#favoriteButtonContainer.isLiked = true;
 
-        const likeButton = document.querySelector("#like-button");
-        likeButton.addEventListener("click", async () => {
+        const favoriteButton = document.querySelector("#favoriteButton");
+        favoriteButton.addEventListener("click", async () => {
             await FavoriteRestaurantIdb.deleteRestaurant(this.#restaurant.id);
             this.#renderButton();
         });
     }
 }
 
-export default LikeButtonInitiator;
+export default FavoriteButtonInitiator;

@@ -4,6 +4,7 @@ import UrlParser from "../../routes/url-parser";
 import { getRestaurantDetail } from "../../data/data-source";
 import API_ENDPOINTS from "../../data/api-endpoint";
 import ReviewInitiator from "../../utils/review-initiator";
+import FavoriteButtonInitiator from "../../utils/favorite-button-initiator";
 
 const DetailPage = {
     async render() {
@@ -28,6 +29,7 @@ const DetailPage = {
         const drinksElement = document.getElementById("restaurantDrinks");
         const reviewsElement = document.getElementById("restaurantReviews");
         const reviewFormElement = document.getElementById("reviewForm");
+        const favoriteButtonElement = document.querySelector("favorite-button");
 
         // set element attribute value
         nameElement.innerHTML = restaurant.name;
@@ -67,6 +69,11 @@ const DetailPage = {
             reviewContainer: reviewsElement,
             initialReviews: restaurant.customerReviews,
             reviewForm: reviewFormElement,
+        });
+
+        FavoriteButtonInitiator.init({
+            favoriteButtonContainer: favoriteButtonElement,
+            restaurant: restaurant,
         });
     },
 };
