@@ -30,7 +30,7 @@ class RestaurantList extends HTMLElement {
     afterRender() {
         // get element
         const restaurantListElement = this.querySelector("#restaurant-list");
-        this.restaurants.forEach((restaurant) => {
+        this.#restaurants.forEach((restaurant) => {
             const restaurantItemElement =
                 document.createElement("restaurant-item");
             restaurantListElement.appendChild(restaurantItemElement);

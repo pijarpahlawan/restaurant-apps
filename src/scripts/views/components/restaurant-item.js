@@ -1,6 +1,6 @@
 import template from "./templates/restaurant-item.html";
 import "./styles/restaurant-item.scss";
-import API_CONFIG from "../../config/api-config";
+import API_ENDPOINTS from "../../data/api-endpoint";
 
 class RestaurantItem extends HTMLElement {
     #restaurant = null;
@@ -35,16 +35,18 @@ class RestaurantItem extends HTMLElement {
         );
 
         // set elements attribute value
-        anchorElement.href = `/#/detail/${this.restaurant.id}`;
+        anchorElement.href = `/#/detail/${this.#restaurant.id}`;
 
-        pictureElement.src = `${API_CONFIG.BASE_IMAGE_URL}${this.restaurant.pictureId}`;
-        pictureElement.alt = this.restaurant.name;
+        pictureElement.src = API_ENDPOINTS.RESTAURANT_IMAGE(
+            this.#restaurant.pictureId
+        );
+        pictureElement.alt = this.#restaurant.name;
 
-        ratingElement.innerHTML = this.restaurant.rating;
+        ratingElement.innerHTML = this.#restaurant.rating;
 
-        nameElement.innerHTML = this.restaurant.name;
+        nameElement.innerHTML = this.#restaurant.name;
 
-        descriptionElement.innerHTML = this.restaurant.description;
+        descriptionElement.innerHTML = this.#restaurant.description;
     }
 }
 
