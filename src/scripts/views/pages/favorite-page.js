@@ -1,3 +1,5 @@
+import FavoriteRestaurantIdb from "../../data/favorite-restaurant-idb";
+
 const FavoritePage = {
     async render() {
         return `
@@ -6,7 +8,9 @@ const FavoritePage = {
     },
 
     async afterRender() {
-        // TODO: display favorite restaurant
+        const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+        const restaurantListElement = document.querySelector("restaurant-list");
+        restaurantListElement.restaurants = restaurants;
     },
 };
 
