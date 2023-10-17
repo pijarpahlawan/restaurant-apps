@@ -5,13 +5,9 @@ import API_ENDPOINTS from "../../data/api-endpoint";
 class RestaurantItem extends HTMLElement {
     #restaurant = null;
 
-    connectedCallback() {
-        this.render();
-    }
-
     set restaurant(value) {
         this.#restaurant = value;
-        this.afterRender();
+        this.render();
     }
 
     get restaurant() {
@@ -22,9 +18,7 @@ class RestaurantItem extends HTMLElement {
         // assign main class and innerHTML
         this.className = "restaurant-item";
         this.innerHTML = template;
-    }
 
-    afterRender() {
         // get elements
         const anchorElement = this.querySelector("#restaurant-item-anchor");
         const pictureElement = this.querySelector("#restaurant-item-picture");
@@ -35,6 +29,8 @@ class RestaurantItem extends HTMLElement {
         );
 
         // set elements attribute value
+        this.id = this.#restaurant.id;
+
         anchorElement.href = `/#/detail/${this.#restaurant.id}`;
 
         pictureElement.src = API_ENDPOINTS.RESTAURANT_IMAGE(
