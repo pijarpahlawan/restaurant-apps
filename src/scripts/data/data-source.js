@@ -26,7 +26,6 @@ async function addRestaurantReview(review) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "X-Auth-Token": "12345",
             },
             body: JSON.stringify(review),
         });
