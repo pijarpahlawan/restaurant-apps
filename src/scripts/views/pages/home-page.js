@@ -8,9 +8,14 @@ const HomePage = {
     },
 
     async afterRender() {
-        const restaurantList = await getAllRestaurant();
         const restaurantListElement = document.querySelector("restaurant-list");
-        restaurantListElement.restaurants = restaurantList;
+
+        try {
+            const restaurantList = await getAllRestaurant();
+            restaurantListElement.restaurants = restaurantList;
+        } catch (error) {
+            restaurantListElement.renderError(error);
+        }
     },
 };
 

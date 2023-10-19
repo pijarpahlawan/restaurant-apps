@@ -37,6 +37,12 @@ class RestaurantList extends HTMLElement {
             restaurantItemElement.restaurant = restaurant;
         });
     }
+
+    renderError(error) {
+        const toastAlertElement = document.createElement("toast-alert");
+        this.appendChild(toastAlertElement);
+        toastAlertElement.message = error.message;
+    }
 }
 
 customElements.define("restaurant-list", RestaurantList);

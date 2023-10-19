@@ -13,18 +13,26 @@ class ReviewInitiator {
         reviewForm.addEventListener("submit", async (event) => {
             event.preventDefault();
 
-            const formData = new FormData(event.currentTarget);
-            const formObject = { id: restaurantId };
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
+            try {
+                const formData = new FormData(event.currentTarget);
+                const formObject = { id: restaurantId };
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
 
-            const updatedReview = (await addRestaurantReview(formObject))
-                .customerReviews;
-            this.#reviews = updatedReview;
+                const updatedReview = (await addRestaurantReview(formObject))
+                    .customerReviews;
+                this.#reviews = updatedReview;
+
+                this.#renderReviews();
+            } catch (error) {
+                const detailPage = document.querySelector(".restaurant-detail");
+                const toastAlertElement = document.createElement("toast-alert");
+                detailPage.appendChild(toastAlertElement);
+                toastAlertElement.message = error.message;
+            }
 
             event.target.reset();
-            this.#renderReviews();
         });
 
         this.#renderReviews();
