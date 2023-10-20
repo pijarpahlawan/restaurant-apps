@@ -15,14 +15,20 @@ class ReviewInitiator {
 
             try {
                 const formData = new FormData(event.currentTarget);
+
                 const formObject = { id: restaurantId };
+
                 formData.forEach((value, key) => {
                     formObject[key] = value;
                 });
 
-                const updatedReview = (await addRestaurantReview(formObject))
-                    .customerReviews;
-                this.#reviews = updatedReview;
+                const response = await addRestaurantReview(formObject);
+
+                if (response.error) {
+                    throw new Error(response.message);
+                }
+
+                this.#reviews = response.customerReviews;
 
                 this.#renderReviews();
             } catch (error) {
@@ -30,9 +36,9 @@ class ReviewInitiator {
                 const toastAlertElement = document.createElement("toast-alert");
                 detailPage.appendChild(toastAlertElement);
                 toastAlertElement.message = error.message;
+            } finally {
+                event.target.reset();
             }
-
-            event.target.reset();
         });
 
         this.#renderReviews();

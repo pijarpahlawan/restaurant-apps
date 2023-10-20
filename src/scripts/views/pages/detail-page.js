@@ -15,7 +15,13 @@ const DetailPage = {
         try {
             // get data from url
             const url = UrlParser.parseActiveUrlWithoutCombiner();
-            const restaurant = await getRestaurantDetail(url.id);
+            const response = await getRestaurantDetail(url.id);
+
+            if (response.error) {
+                throw new Error(response.message);
+            }
+
+            const restaurant = response.restaurant;
 
             // get element
             const nameElement = document.getElementById("restaurantName");

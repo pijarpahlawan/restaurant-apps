@@ -11,8 +11,13 @@ const HomePage = {
         const restaurantListElement = document.querySelector("restaurant-list");
 
         try {
-            const restaurantList = await getAllRestaurant();
-            restaurantListElement.restaurants = restaurantList;
+            const response = await getAllRestaurant();
+
+            if (response.error) {
+                throw new Error(response.message);
+            }
+
+            restaurantListElement.restaurants = response.restaurants;
         } catch (error) {
             restaurantListElement.renderError(error);
         }
