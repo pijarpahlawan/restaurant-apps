@@ -105,6 +105,7 @@
 
                 input {
                     border-bottom: 1px solid $main-black;
+                    height: 2.75rem;
                 }
 
                 input,
@@ -118,7 +119,7 @@
                 margin-right: 1rem;
                 background-color: $main-black;
                 color: $main-white;
-                padding: 0.5rem;
+                padding: 1rem 1.5rem;
                 border-radius: 10px;
             }
         }
