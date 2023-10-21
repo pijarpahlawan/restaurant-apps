@@ -1,57 +1,63 @@
-import { addRestaurantReview } from "../data/data-source";
+import { addRestaurantReview } from '../data/data-source';
 
 class ReviewInitiator {
-    static #reviewContainer = null;
-    static #reviews = null;
+  static #reviewContainer = null;
 
-    static init({ restaurantId, reviewContainer, initialReviews, reviewForm }) {
-        // assign private field
-        this.#reviewContainer = reviewContainer;
-        this.#reviews = initialReviews;
+  static #reviews = null;
 
-        // add event listener to form when submit
-        reviewForm.addEventListener("submit", async (event) => {
-            event.preventDefault();
+  static init({
+    restaurantId,
+    reviewContainer,
+    initialReviews,
+    reviewForm,
+  }) {
+    // assign private field
+    this.#reviewContainer = reviewContainer;
+    this.#reviews = initialReviews;
 
-            try {
-                const formData = new FormData(event.currentTarget);
+    // add event listener to form when submit
+    reviewForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-                const formObject = { id: restaurantId };
+      try {
+        const formData = new FormData(event.currentTarget);
 
-                formData.forEach((value, key) => {
-                    formObject[key] = value;
-                });
+        const formObject = { id: restaurantId };
 
-                const response = await addRestaurantReview(formObject);
-
-                if (response.error) {
-                    throw new Error(response.message);
-                }
-
-                this.#reviews = response.customerReviews;
-
-                this.#renderReviews();
-            } catch (error) {
-                const detailPage = document.querySelector(".restaurant-detail");
-                const toastAlertElement = document.createElement("toast-alert");
-                detailPage.appendChild(toastAlertElement);
-                toastAlertElement.message = error.message;
-            } finally {
-                event.target.reset();
-            }
+        formData.forEach((value, key) => {
+          formObject[key] = value;
         });
+
+        const response = await addRestaurantReview(formObject);
+
+        if (response.error) {
+          throw new Error(response.message);
+        }
+
+        this.#reviews = response.customerReviews;
 
         this.#renderReviews();
-    }
+      } catch (error) {
+        const detailPage = document.querySelector('.restaurant-detail');
+        const toastAlertElement = document.createElement('toast-alert');
+        detailPage.appendChild(toastAlertElement);
+        toastAlertElement.message = error.message;
+      } finally {
+        event.target.reset();
+      }
+    });
 
-    static #renderReviews() {
-        this.#reviewContainer.innerHTML = "";
-        this.#reviews.forEach((review) => {
-            const reviewElement = document.createElement("review-item");
-            reviewElement.review = review;
-            this.#reviewContainer.appendChild(reviewElement);
-        });
-    }
+    this.#renderReviews();
+  }
+
+  static #renderReviews() {
+    this.#reviewContainer.innerHTML = '';
+    this.#reviews.forEach((review) => {
+      const reviewElement = document.createElement('review-item');
+      reviewElement.review = review;
+      this.#reviewContainer.appendChild(reviewElement);
+    });
+  }
 }
 
 export default ReviewInitiator;
