@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -50,6 +51,24 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
+        }),
+        new WorkboxWebpackPlugin.GenerateSW({
+            swDest: "./sw.bundle.js",
+            runtimeCaching: [
+                {
+                    urlPattern: ({ url }) =>
+                        url.href.startsWith(
+                            "https://restaurant-api.dicoding.dev/"
+                        ),
+                    handler: "StaleWhileRevalidate",
+                    options: {
+                        cacheName: "restaurant-data",
+                        expiration: {
+                            maxAgeSeconds: 60 * 60 * 24 * 7,
+                        },
+                    },
+                },
+            ],
         }),
     ],
     optimization: {
