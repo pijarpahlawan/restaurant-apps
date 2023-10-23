@@ -1,3 +1,4 @@
+import ToasterInitiator from "../utils/toaster-initiator";
 import API_ENDPOINTS from "./api-endpoint";
 
 // get restaurant list
@@ -12,10 +13,7 @@ async function getAllRestaurant() {
 
         return responseJson.restaurants;
     } catch (error) {
-        const bodyElement = document.querySelector("body");
-        const toastAlertElement = document.createElement("toast-alert");
-        bodyElement.appendChild(toastAlertElement);
-        toastAlertElement.message = error.message;
+        ToasterInitiator.init(error.message);
     }
 }
 
@@ -31,10 +29,7 @@ async function getRestaurantDetail(id) {
 
         return responseJson.restaurant;
     } catch (error) {
-        const bodyElement = document.querySelector("body");
-        const toastAlertElement = document.createElement("toast-alert");
-        bodyElement.appendChild(toastAlertElement);
-        toastAlertElement.message = error.message;
+        ToasterInitiator.init(error.message);
     }
 }
 
@@ -56,10 +51,7 @@ async function addRestaurantReview(review) {
 
         return responseJson.customerReviews;
     } catch (error) {
-        const bodyElement = document.querySelector("body");
-        const toastAlertElement = document.createElement("toast-alert");
-        bodyElement.appendChild(toastAlertElement);
-        toastAlertElement.message = error.message;
+        ToasterInitiator.init(error.message);
     }
 }
 
