@@ -30,18 +30,17 @@ class RestaurantList extends HTMLElement {
     afterRender() {
         // get element
         const restaurantListElement = this.querySelector("#restaurant-list");
+
+        if (this.#restaurants === undefined) {
+            return;
+        }
+
         this.#restaurants.forEach((restaurant) => {
             const restaurantItemElement =
                 document.createElement("restaurant-item");
             restaurantListElement.appendChild(restaurantItemElement);
             restaurantItemElement.restaurant = restaurant;
         });
-    }
-
-    renderError(error) {
-        const toastAlertElement = document.createElement("toast-alert");
-        this.appendChild(toastAlertElement);
-        toastAlertElement.message = error.message;
     }
 }
 
