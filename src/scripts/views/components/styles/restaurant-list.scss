@@ -1,52 +1,52 @@
 .restaurant-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 
-    h1 {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
 
-    &__container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 @media screen and (min-width: 650px) {
-    .restaurant-list {
-        &__container {
-            grid-template-columns: 1fr 1fr;
-        }
+  .restaurant-list {
+    &__container {
+      grid-template-columns: 1fr 1fr;
     }
+  }
 }
 
 @media screen and (min-width: 850px) {
-    .restaurant-list {
-        &__container {
-            grid-template-columns: repeat(3, 1fr);
-        }
+  .restaurant-list {
+    &__container {
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
 }
 
 @media screen and (min-width: 1200px) {
-    .restaurant-list {
-        &__container {
-            grid-template-columns: repeat(4, 1fr);
-        }
+  .restaurant-list {
+    &__container {
+      grid-template-columns: repeat(4, 1fr);
     }
+  }
 }
 
 @media screen and (min-width: 1600px) {
-    .restaurant-list {
-        &__container {
-            grid-template-columns: repeat(5, 1fr);
-        }
+  .restaurant-list {
+    &__container {
+      grid-template-columns: repeat(5, 1fr);
     }
+  }
 }

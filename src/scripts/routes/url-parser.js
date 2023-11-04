@@ -10,9 +10,9 @@ class UrlParser {
 
   static #urlCombiner(splittedUrl) {
     return (
-      (splittedUrl.resource ? `/${splittedUrl.resource}` : '/')
-            + (splittedUrl.id ? '/:id' : '')
-            + (splittedUrl.verb ? `/${splittedUrl.verb}` : '')
+      (splittedUrl.resource ? `/${splittedUrl.resource}` : '/') +
+      (splittedUrl.id ? '/:id' : '') +
+      (splittedUrl.verb ? `/${splittedUrl.verb}` : '')
     );
   }
 

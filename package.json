@@ -43,6 +43,7 @@
         "karma-sourcemap-loader": "^0.3.8",
         "karma-webpack": "^5.0.0",
         "mini-css-extract-plugin": "^2.7.6",
+        "prettier": "^3.0.3",
         "sass-loader": "^13.3.2",
         "terser-webpack-plugin": "^5.3.9",
         "webpack": "^5.73.0",

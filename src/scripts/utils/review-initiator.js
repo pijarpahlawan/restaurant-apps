@@ -5,12 +5,7 @@ class ReviewInitiator {
 
   static #reviews = null;
 
-  static init({
-    restaurantId,
-    reviewContainer,
-    initialReviews,
-    reviewForm,
-  }) {
+  static init({ restaurantId, reviewContainer, initialReviews, reviewForm }) {
     // assign private field
     this.#reviewContainer = reviewContainer;
     this.#reviews = initialReviews;

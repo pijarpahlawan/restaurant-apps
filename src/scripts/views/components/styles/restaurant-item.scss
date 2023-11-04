@@ -1,59 +1,59 @@
-@import "../../../../styles/global";
+@import '../../../../styles/global';
 
 .restaurant-item {
-    width: 100%;
-    box-shadow: 0 4px 8px 0 rgba($color: $main-white, $alpha: 0.2);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: $main-white;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba($color: $main-white, $alpha: 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: $main-white;
 
-    a {
-        text-decoration: none;
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba($color: $main-white, $alpha: 0.5);
+  }
+
+  &__header {
+    position: relative;
+
+    &__picture {
+      width: 100%;
+      height: 17rem !important;
+      object-fit: cover;
+      object-position: center;
     }
 
-    &:hover {
-        box-shadow: 0 8px 16px 0 rgba($color: $main-white, $alpha: 0.5);
+    &__rating {
+      position: absolute;
+      padding: 0.5rem;
+      bottom: 1.5rem;
+      left: 0;
+      display: inline-block;
+      background-color: $main-black;
+      color: $main-white;
+
+      &__score {
+        margin-left: 0.75rem;
+      }
+    }
+  }
+
+  &__content {
+    padding: 1rem;
+    color: $main-black;
+
+    h3 {
+      margin: 0 0 0.75rem 0;
     }
 
-    &__header {
-        position: relative;
-
-        &__picture {
-            width: 100%;
-            height: 17rem !important;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        &__rating {
-            position: absolute;
-            padding: 0.5rem;
-            bottom: 1.5rem;
-            left: 0;
-            display: inline-block;
-            background-color: $main-black;
-            color: $main-white;
-
-            &__score {
-                margin-left: 0.75rem;
-            }
-        }
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
     }
-
-    &__content {
-        padding: 1rem;
-        color: $main-black;
-
-        h3 {
-            margin: 0 0 0.75rem 0;
-        }
-
-        p {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-        }
-    }
+  }
 }
