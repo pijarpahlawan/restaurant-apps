@@ -1,19 +1,19 @@
-import template from "./templates/home-page.html";
-import "./styles/home-page.scss";
-import { getAllRestaurant } from "../../data/data-source";
+import template from './templates/home-page.html';
+import './styles/home-page.scss';
+import { getAllRestaurant } from '../../data/data-source';
 
 const HomePage = {
-    async render() {
-        return template;
-    },
+  async render() {
+    return template;
+  },
 
-    async afterRender() {
-        const restaurantListElement = document.querySelector("restaurant-list");
+  async afterRender() {
+    const restaurantListElement = document.querySelector('restaurant-list');
 
-        const restaurants = await getAllRestaurant();
+    const restaurants = await getAllRestaurant();
 
-        restaurantListElement.restaurants = restaurants;
-    },
+    restaurantListElement.restaurants = restaurants;
+  },
 };
 
 export default HomePage;

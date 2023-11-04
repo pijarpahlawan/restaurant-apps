@@ -1,13 +1,13 @@
-import logo from "../../../assets/images/logo.svg";
+import logo from '../../../assets/images/logo.svg';
 
 class BrandLogo extends HTMLElement {
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this.innerHTML = logo;
-    }
+  render() {
+    this.innerHTML = logo;
+  }
 }
 
-customElements.define("brand-logo", BrandLogo);
+customElements.define('brand-logo', BrandLogo);

@@ -8,7 +8,7 @@
         "build": "webpack --config webpack.prod.js",
         "serve": "http-server dist --port 9000",
         "test": "karma start",
-        "lint": "eslint src/scripts/**/*.js"
+        "lint": "npx eslint ./src"
     },
     "keywords": [
         "restaurant",
