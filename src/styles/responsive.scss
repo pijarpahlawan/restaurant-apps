@@ -1,4 +1,6 @@
-@media screen and (min-width: 1024px) {
+@import 'global';
+
+@media screen and (min-width: $breakpoint-large) {
   header {
     .hamburger {
       display: none;
