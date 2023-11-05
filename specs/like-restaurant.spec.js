@@ -12,8 +12,6 @@ describe('Liking A Restaurant', () => {
   });
 
   it('should show the like button when the restaurant has not been liked before', async () => {
-    document.body.innerHTML = '<favorite-button></favorite-button>';
-
     await FavoriteButtonInitiator.init({
       favoriteButtonContainer: document.querySelector('favorite-button'),
       restaurant: {
@@ -25,8 +23,6 @@ describe('Liking A Restaurant', () => {
   });
 
   it('should be able to like the restaurant', async () => {
-    document.body.innerHTML = '<favorite-button></favorite-button>';
-
     await FavoriteButtonInitiator.init({
       favoriteButtonContainer: document.querySelector('favorite-button'),
       restaurant: {
@@ -44,8 +40,6 @@ describe('Liking A Restaurant', () => {
   });
 
   it('should not add a restaurant again when its already liked', async () => {
-    document.body.innerHTML = '<favorite-button></favorite-button>';
-
     await FavoriteButtonInitiator.init({
       favoriteButtonContainer: document.querySelector('favorite-button'),
       restaurant: {
@@ -65,8 +59,6 @@ describe('Liking A Restaurant', () => {
   });
 
   it('should not add a restaurant when it has no id', async () => {
-    document.body.innerHTML = '<favorite-button></favorite-button>';
-
     await FavoriteButtonInitiator.init({
       favoriteButtonContainer: document.querySelector('favorite-button'),
       restaurant: {},
