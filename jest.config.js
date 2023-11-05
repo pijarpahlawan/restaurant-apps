@@ -5,7 +5,7 @@
 
 /** @type {import('jest').Config} */
 const config = {
-  testMatch: ['**/specs/**/*.spec.[jt]s?(x)'],
+  testMatch: ['**/tests/**/*.test.[jt]s?(x)'],
 
   // The paths to modules that run some code to configure or set up the
   // testing environment before each test
@@ -22,7 +22,7 @@ const config = {
   // An array of regexp pattern strings that are matched against all test paths,
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/__mocks__/asset-mock.js',
+      '<rootDir>/tests/__mocks__/asset-mock.js',
   },
 };
 
