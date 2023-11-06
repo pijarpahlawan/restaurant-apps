@@ -7,23 +7,30 @@
   align-items: center;
   padding: 2rem;
 
-  h1 {
+  #restaurantListTitle {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 2rem;
     text-align: center;
   }
 
-  &__container {
+  #restaurantListContainer {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  #restaurantListNotFound {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    text-align: center;
   }
 }
 
 @media screen and (min-width: $breakpoint-small) {
   .restaurant-list {
-    &__container {
+    #restaurantListContainer {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -31,7 +38,7 @@
 
 @media screen and (min-width: $breakpoint-medium) {
   .restaurant-list {
-    &__container {
+    #restaurantListContainer {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -39,7 +46,7 @@
 
 @media screen and (min-width: $breakpoint-large) {
   .restaurant-list {
-    &__container {
+    #restaurantListContainer {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -47,7 +54,7 @@
 
 @media screen and (min-width: $breakpoint-xlarge) {
   .restaurant-list {
-    &__container {
+    #restaurantListContainer {
       grid-template-columns: repeat(5, 1fr);
     }
   }

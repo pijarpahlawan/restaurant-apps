@@ -1,4 +1,3 @@
-import template from './templates/restaurant-list.html';
 import './styles/restaurant-list.scss';
 
 class RestaurantList extends HTMLElement {
@@ -20,20 +19,30 @@ class RestaurantList extends HTMLElement {
   render() {
     // assign main class and innerHTML
     this.className = 'restaurant-list';
-    this.innerHTML = template;
 
-    // get attribute value
     const title = this.getAttribute('title');
-    this.querySelector('#restaurantListTitle').innerHTML = title;
+
+    this.innerHTML = `<h1 id="restaurantListTitle">${title}</h1>`;
   }
 
   afterRender() {
-    // get element
-    const restaurantListElement = this.querySelector('#restaurantList');
+    const tempElement = document.createElement('div');
 
-    if (this.#restaurants === undefined) {
+    if (this.#restaurants === undefined || this.#restaurants.length === 0) {
+      tempElement.innerHTML =
+        '<h2 id="restaurantListNotFound">Restaurant not found</h2>';
+      this.appendChild(tempElement.firstChild);
       return;
     }
+
+    tempElement.innerHTML = `<div id="restaurantListContainer"></div>`;
+    this.appendChild(tempElement.firstChild);
+
+    const restaurantListElement = document.querySelector(
+      '#restaurantListContainer',
+    );
+
+    console.log(this.#restaurants);
 
     this.#restaurants.forEach((restaurant) => {
       const restaurantItemElement = document.createElement('restaurant-item');
