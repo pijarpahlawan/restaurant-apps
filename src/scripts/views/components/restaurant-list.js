@@ -24,12 +24,12 @@ class RestaurantList extends HTMLElement {
 
     // get attribute value
     const title = this.getAttribute('title');
-    this.querySelector('#restaurant-list-title').innerHTML = title;
+    this.querySelector('#restaurantListTitle').innerHTML = title;
   }
 
   afterRender() {
     // get element
-    const restaurantListElement = this.querySelector('#restaurant-list');
+    const restaurantListElement = this.querySelector('#restaurantList');
 
     if (this.#restaurants === undefined) {
       return;
