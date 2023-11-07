@@ -20,13 +20,11 @@ class RestaurantItem extends HTMLElement {
     this.innerHTML = template;
 
     // get elements
-    const anchorElement = this.querySelector('#restaurant-item-anchor');
-    const pictureElement = this.querySelector('#restaurant-item-picture');
-    const ratingElement = this.querySelector('#restaurant-item-rating');
-    const nameElement = this.querySelector('#restaurant-item-name');
-    const descriptionElement = this.querySelector(
-      '#restaurant-item-description',
-    );
+    const anchorElement = this.querySelector('#restaurantItemAnchor');
+    const pictureElement = this.querySelector('#restaurantItemPicture');
+    const ratingElement = this.querySelector('#restaurantItemRating');
+    const nameElement = this.querySelector('#restaurantItemName');
+    const descriptionElement = this.querySelector('#restaurantItemDescription');
 
     // set elements attribute value
     this.id = this.#restaurant.id;
