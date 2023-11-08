@@ -1,6 +1,16 @@
 <div class="hero">
   <h1>Mypi Resto Group:</h1>
   <h2>Enjoy a variety of flavors with Mypi Resto Group</h2>
-  <img class="hero__image" src="./hero-image.jpg" alt="hero" />
+  <picture>
+    <source media="{max-width: 600px}" srcset="./images/hero-image-small.jpg" />
+    <img
+      class="hero__image"
+      src="./images/hero-image-large.jpg"
+      alt="hero"
+      height="500"
+      width="1000"
+      loading="lazy"
+    />
+  </picture>
 </div>
 <restaurant-list title="Our Restaurant"></restaurant-list>

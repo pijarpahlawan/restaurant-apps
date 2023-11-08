@@ -6,6 +6,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -46,6 +47,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'public/'),
           to: path.resolve(__dirname, 'dist/'),
+          globOptions: {
+            // CopyWebpackPlugin mengabaikan berkas yang berada di dalam folder images
+            ignore: ['**/images/**'],
+          },
         },
       ],
     }),
@@ -75,6 +80,7 @@ module.exports = {
     },
     minimize: true,
     minimizer: [
+      new CleanWebpackPlugin(),
       new CssMinimizerPlugin(),
       new TerserPlugin({
         terserOptions: {
@@ -85,13 +91,18 @@ module.exports = {
         extractComments: false,
       }),
       new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.svgoMinify,
-          options: {
-            multipass: true,
-            plugins: ['preset-default'],
+        minimizer: [
+          {
+            implementation: ImageMinimizerPlugin.svgoMinify,
+            options: {
+              multipass: true,
+              plugins: ['preset-default'],
+            },
           },
-        },
+          {
+            implementation: ImageMinimizerPlugin.sharpMinify,
+          },
+        ],
       }),
     ],
   },
