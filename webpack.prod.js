@@ -1,5 +1,6 @@
 const common = require('./webpack.common');
 const { merge } = require('webpack-merge');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -20,4 +21,22 @@ module.exports = merge(common, {
       },
     ],
   },
+  plugins: [
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: './sw.bundle.js',
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith('https://restaurant-api.dicoding.dev/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurant-data',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+            },
+          },
+        },
+      ],
+    }),
+  ],
 });

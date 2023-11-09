@@ -12,7 +12,9 @@ const app = new App({
 
 window.addEventListener('load', () => {
   app.renderPage();
-  swRegister();
+  if (process.env.NODE_ENV === 'production') {
+    swRegister();
+  }
 });
 
 window.addEventListener('hashchange', () => {

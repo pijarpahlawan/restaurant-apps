@@ -4,7 +4,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -50,7 +49,6 @@ module.exports = {
           from: path.resolve(__dirname, 'public/'),
           to: path.resolve(__dirname, 'dist/'),
           globOptions: {
-            // CopyWebpackPlugin mengabaikan berkas yang berada di dalam folder images
             ignore: ['**/images/**'],
           },
         },
@@ -59,23 +57,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[contenthash]-[name].css',
     }),
-    new WorkboxWebpackPlugin.GenerateSW({
-      swDest: './sw.bundle.js',
-      runtimeCaching: [
-        {
-          urlPattern: ({ url }) =>
-            url.href.startsWith('https://restaurant-api.dicoding.dev/'),
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheName: 'restaurant-data',
-            expiration: {
-              maxAgeSeconds: 60 * 60 * 24 * 7,
-            },
-          },
-        },
-      ],
+    new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
+      analyzerMode: 'static',
     }),
-    new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
     new CompressionPlugin({
       algorithm: 'gzip',
       test: /\.(js|css|html|svg)$/,
