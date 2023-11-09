@@ -47,9 +47,7 @@ jobs:
         run: npm run test
 
       - name: Build
-        run: |
-          npm run build
-          npm run build-image
+        run: npm run build
 
       - name: E2E Testing
         run: |
