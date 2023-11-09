@@ -45,6 +45,3 @@ jobs:
 
       - name: Integeration Testing
         run: npm run test
-
-      - name: Build
-        run: npm run build
