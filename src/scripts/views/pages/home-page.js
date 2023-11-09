@@ -1,6 +1,5 @@
 import template from './templates/home-page.html';
 import './styles/home-page.scss';
-import { getAllRestaurant } from '../../data/data-source';
 
 const HomePage = {
   async render() {
@@ -10,7 +9,9 @@ const HomePage = {
   async afterRender() {
     const restaurantListElement = document.querySelector('restaurant-list');
 
-    const restaurants = await getAllRestaurant();
+    const restaurants = await import('../../data/data-source').then((module) =>
+      module.getAllRestaurant(),
+    );
 
     restaurantListElement.restaurants = restaurants;
   },

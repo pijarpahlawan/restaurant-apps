@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
-    CodeceptJS: true,
+    // CodeceptJS: true,
   },
   extends: 'airbnb-base',
   overrides: [
@@ -24,5 +24,7 @@ module.exports = {
   rules: {
     'operator-linebreak': 'off',
     'object-curly-newline': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'function-paren-newline': 'off',
   },
 };

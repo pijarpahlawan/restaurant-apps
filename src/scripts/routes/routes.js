@@ -1,12 +1,12 @@
-import HomePage from '../views/pages/home-page';
-import FavoritePage from '../views/pages/favorite-page';
-import DetailPage from '../views/pages/detail-page';
-
 const routes = {
-  '/': HomePage, // default page
-  '/home': HomePage,
-  '/favorite': FavoritePage,
-  '/detail/:id': DetailPage,
+  '/': () =>
+    import('../views/pages/home-page').then((module) => module.default), // default page
+  '/home': () =>
+    import('../views/pages/home-page').then((module) => module.default),
+  '/favorite': () =>
+    import('../views/pages/favorite-page').then((module) => module.default),
+  '/detail/:id': () =>
+    import('../views/pages/detail-page').then((module) => module.default),
 };
 
 export default routes;

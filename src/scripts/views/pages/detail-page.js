@@ -1,7 +1,6 @@
 import template from './templates/detail-page.html';
 import './styles/detail-page.scss';
 import UrlParser from '../../routes/url-parser';
-import { getRestaurantDetail } from '../../data/data-source';
 import API_ENDPOINTS from '../../data/api-endpoint';
 import ReviewInitiator from '../../utils/review-initiator';
 import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
@@ -14,7 +13,10 @@ const DetailPage = {
   async afterRender() {
     // get data from url
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurant = await getRestaurantDetail(url.id);
+
+    const restaurant = await import('../../data/data-source').then((module) =>
+      module.getRestaurantDetail(url.id),
+    );
 
     if (restaurant === undefined) {
       return;
@@ -38,11 +40,7 @@ const DetailPage = {
 
     pictureElement.setAttribute(
       'src',
-      `${
-        restaurant.pictureId
-          ? API_ENDPOINTS.RESTAURANT_IMAGE(restaurant.pictureId)
-          : 'https://via.placeholder.com/500x300?text=No+Image'
-      }`,
+      `${API_ENDPOINTS.RESTAURANT_IMAGE(restaurant.pictureId)}`,
     );
     pictureElement.setAttribute('alt', `${restaurant.name}`);
 

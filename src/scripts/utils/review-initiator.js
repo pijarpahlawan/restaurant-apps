@@ -1,5 +1,3 @@
-import { addRestaurantReview } from '../data/data-source';
-
 class ReviewInitiator {
   static #reviewContainer = null;
 
@@ -20,7 +18,9 @@ class ReviewInitiator {
         formObject[key] = value;
       });
 
-      const customerReviews = await addRestaurantReview(formObject);
+      const customerReviews = await import('../data/data-source').then(
+        (module) => module.addRestaurantReview(formObject),
+      );
 
       event.target.reset();
 
