@@ -5,54 +5,54 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ['master']
   pull_request:
-    branches: [ "master" ]
+    branches: ['master']
 
-jobs:  
+jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
-      
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        
-    - name: Cache Dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-${{ matrix.node-version }}-
-          
-    - name: Install Dependencies
-      run: npm install
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Linting and Code Quality
-      run: npm run lint
-      
-    - name: Integeration Testing
-      run: npm run test
-      
-    - name: Build
-      run: |
-        npm run build
-        npm run build-image
-        
-    - name: E2E Testing
-      run: |
-        npm run serve &
-        sleep 5
-        npm run e2e
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}-
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Linting and Code Quality
+        run: npm run lint
+
+      - name: Integeration Testing
+        run: npm run test
+
+      - name: Build
+        run: |
+          npm run build
+          npm run build-image
+
+      - name: E2E Testing
+        run: |
+          npm run serve &
+          sleep 5
+          npm run e2e
