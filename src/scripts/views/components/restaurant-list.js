@@ -35,7 +35,7 @@ class RestaurantList extends HTMLElement {
       return;
     }
 
-    tempElement.innerHTML = `<div id="restaurantListContainer"></div>`;
+    tempElement.innerHTML = '<div id="restaurantListContainer"></div>';
     this.appendChild(tempElement.firstChild);
 
     const restaurantListElement = document.querySelector(
