@@ -1,4 +1,3 @@
-import ToasterInitiator from '../utils/toaster-initiator';
 import API_ENDPOINTS from './api-endpoint';
 
 // get restaurant list
@@ -13,8 +12,12 @@ async function getAllRestaurant() {
 
     return responseJson.restaurants;
   } catch (error) {
-    ToasterInitiator.init(error.message);
-    return undefined;
+    return import('../utils/toaster-initiator')
+      .then((module) => module.default)
+      .then((ToasterInitiator) => {
+        ToasterInitiator.init(error.message);
+      })
+      .finally(() => undefined);
   }
 }
 
@@ -30,8 +33,12 @@ async function getRestaurantDetail(id) {
 
     return responseJson.restaurant;
   } catch (error) {
-    ToasterInitiator.init(error.message);
-    return undefined;
+    return import('../utils/toaster-initiator')
+      .then((module) => module.default)
+      .then((ToasterInitiator) => {
+        ToasterInitiator.init(error.message);
+      })
+      .finally(() => undefined);
   }
 }
 
@@ -53,8 +60,12 @@ async function addRestaurantReview(review) {
 
     return responseJson.customerReviews;
   } catch (error) {
-    ToasterInitiator.init(error.message);
-    return undefined;
+    return import('../utils/toaster-initiator')
+      .then((module) => module.default)
+      .then((ToasterInitiator) => {
+        ToasterInitiator.init(error.message);
+      })
+      .finally(() => undefined);
   }
 }
 

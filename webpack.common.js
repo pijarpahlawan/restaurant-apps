@@ -4,19 +4,22 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   entry: {
-    components: path.resolve(
-      __dirname,
-      'src/scripts/views/components/index.js',
-    ),
-    index: {
-      dependOn: 'components',
-      import: path.resolve(__dirname, 'src/scripts/index.js'),
+    components: {
+      import: path.resolve(__dirname, 'src/scripts/views/components/index.js'),
+      dependOn: 'shared',
     },
+    index: {
+      import: path.resolve(__dirname, 'src/scripts/index.js'),
+      dependOn: 'shared',
+    },
+    shared: [path.resolve(__dirname, 'src/scripts/data/api-endpoint.js')],
   },
   output: {
     filename: '[contenthash]-[name].bundle.js',
@@ -46,6 +49,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'public/'),
           to: path.resolve(__dirname, 'dist/'),
+          globOptions: {
+            // CopyWebpackPlugin mengabaikan berkas yang berada di dalam folder images
+            ignore: ['**/images/**'],
+          },
         },
       ],
     }),
@@ -68,6 +75,11 @@ module.exports = {
         },
       ],
     }),
+    new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.(js|css|html|svg)$/,
+    }),
   ],
   optimization: {
     splitChunks: {
@@ -75,23 +87,21 @@ module.exports = {
     },
     minimize: true,
     minimizer: [
+      new CleanWebpackPlugin(),
       new CssMinimizerPlugin(),
-      new TerserPlugin({
-        terserOptions: {
-          format: {
-            comments: false,
-          },
-        },
-        extractComments: false,
-      }),
       new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.svgoMinify,
-          options: {
-            multipass: true,
-            plugins: ['preset-default'],
+        minimizer: [
+          {
+            implementation: ImageMinimizerPlugin.svgoMinify,
+            options: {
+              multipass: true,
+              plugins: ['preset-default'],
+            },
           },
-        },
+          {
+            implementation: ImageMinimizerPlugin.sharpMinify,
+          },
+        ],
       }),
     ],
   },

@@ -1,7 +1,6 @@
 import DrawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
-import ErrorPage from './pages/error-page';
 
 class App {
   #button = null;
@@ -29,10 +28,12 @@ class App {
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
 
-    const page = routes[url];
+    const page = await routes[url]();
 
     if (page === undefined) {
-      this.#content.innerHTML = await ErrorPage.render();
+      this.#content.innerHTML = await import('./pages/error-page').then(
+        (module) => module.default.render(),
+      );
       return;
     }
 
